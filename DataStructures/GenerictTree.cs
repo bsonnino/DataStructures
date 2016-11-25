@@ -30,7 +30,7 @@ namespace DataStructures
 
         public void Add(T data)
         {
-            var treenode = new TreeNode<T>() { Data = data };
+            var treenode = new TreeNode<T> { Data = data };
             if (_root == null)
             {
                 _root = treenode;
@@ -76,22 +76,13 @@ namespace DataStructures
             while (true)
             {
                 int comparison = obj.CompareTo(currentNode.Data);
-                if (comparison < 0)
-                {
-                    if (currentNode.Left != null)
-                        currentNode = currentNode.Left;
-                    else
-                        return false;
-                }
-                else if (comparison > 0)
-                {
-                    if (currentNode.Right != null)
-                        currentNode = currentNode.Right;
-                    else
-                        return false;
-                }
-                else
+                if (comparison == 0)
                     return true;
+                var nodeToFollow = comparison < 0 ? currentNode.Left : currentNode.Right;
+                if (nodeToFollow != null)
+                    currentNode = nodeToFollow;
+                else
+                    return false;
             }
         }
 
@@ -120,28 +111,17 @@ namespace DataStructures
             while (true)
             {
                 int comparison = obj.CompareTo(currentNode.Data);
-                if (comparison < 0)
+                if (comparison == 0)
+                    return Tuple.Create(parentNode, currentNode);
+                var nodeToFollow = comparison < 0 ? currentNode.Left : currentNode.Right;
+
+                if (nodeToFollow != null)
                 {
-                    if (currentNode.Left != null)
-                    {
-                        parentNode = currentNode;
-                        currentNode = currentNode.Left;
-                    }
-                    else
-                        return null;
-                }
-                else if (comparison > 0)
-                {
-                    if (currentNode.Right != null)
-                    {
-                        parentNode = currentNode;
-                        currentNode = currentNode.Right;
-                    }
-                    else
-                        return null;
+                    parentNode = currentNode;
+                    currentNode = nodeToFollow;
                 }
                 else
-                    return Tuple.Create(parentNode, currentNode);
+                    return null;
             }
         }
 
@@ -155,38 +135,17 @@ namespace DataStructures
             var parent = nodeAndParent.Item1;
             var currentNode = nodeAndParent.Item2;
 
-            if (currentNode.Left == null && currentNode.Right == null)
+            if (currentNode.Left == null || currentNode.Right == null)
             {
+                var nodeToReplace = currentNode.Left == null && currentNode.Right == null
+                    ? null
+                    : currentNode.Left == null ? currentNode.Right : currentNode.Left;
                 if (parent == null)
-                    _root = null;
+                    _root = nodeToReplace;
                 else if (parent.Left == currentNode)
-                    parent.Left = null;
+                    parent.Left = nodeToReplace;
                 else
-                    parent.Right = null;
-                _count--;
-                return true;
-            }
-
-            if (currentNode.Left == null)
-            {
-                if (parent == null)
-                    _root = currentNode.Right;
-                else if (parent.Left == currentNode)
-                    parent.Left = currentNode.Right;
-                else
-                    parent.Right = currentNode.Right;
-                _count--;
-                return true;
-            }
-
-            if (currentNode.Right == null)
-            {
-                if (parent == null)
-                    _root = currentNode.Left;
-                else if (parent.Left == currentNode)
-                    parent.Left = currentNode.Left;
-                else
-                    parent.Right = currentNode.Left;
+                    parent.Right = nodeToReplace;
                 _count--;
                 return true;
             }
