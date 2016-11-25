@@ -1,0 +1,21 @@
+﻿<UserControl x:Class="DataStructures.View.ListElement"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             mc:Ignorable="d" x:Name="listElement"
+             Width="60" Height="50">
+    <Grid x:Name="LayoutRoot" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="9*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Border Background="{Binding ElementName=listElement, Path=Fill, Mode=TwoWay}" Margin="3" CornerRadius="5" Grid.Column="0">
+            <ContentPresenter Margin="8" HorizontalAlignment="Center" VerticalAlignment="Center"
+                          Content="{Binding ElementName=listElement, Path=Data, Mode=TwoWay}"/>
+        </Border>
+        <Path Fill="{x:Null}" Stretch="Fill" Stroke="{Binding ElementName=listElement, Path=Fill, Mode=TwoWay}" StrokeThickness="5" 
+              Margin="-5,0,0,0" VerticalAlignment="Center" Height="5" Grid.Column="1" 
+              Data="M627,237 L507.9958,237" />
+    </Grid>
+</UserControl>

@@ -55,6 +55,23 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="GenericQueue.cs" />
+    <Compile Include="GenericQueueAsList.cs" />
+    <Compile Include="GenericStackAsList.cs" />
+    <Compile Include="GenericStack.cs" />
+    <Compile Include="GenerictTree.cs" />
+    <Compile Include="View\TreeElement.xaml.cs">
+      <DependentUpon>TreeElement.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\QueueElement.xaml.cs">
+      <DependentUpon>QueueElement.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\StackElement.xaml.cs">
+      <DependentUpon>StackElement.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ListElement.xaml.cs">
+      <DependentUpon>ListElement.xaml</DependentUpon>
+    </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -63,10 +80,28 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="GenericLinkedList.cs" />
+    <Compile Include="LinkedList.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="View\TreeElement.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\QueueElement.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\StackElement.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\ListElement.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -94,6 +129,16 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Plate.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Cart.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\NodeTree1.png" />
+    <Resource Include="Images\NodeTree2.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

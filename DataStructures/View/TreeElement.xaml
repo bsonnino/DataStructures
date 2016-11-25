@@ -1,0 +1,11 @@
+﻿<UserControl x:Class="DataStructures.View.TreeElement"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    Height="34" Width="34" Name="elTree">
+    <Grid>
+        <Image Source="{Binding ElementName=elTree, Path=Image, Mode=TwoWay}" />
+        <ContentPresenter TextElement.FontSize="14" TextElement.FontWeight="Bold"
+               HorizontalAlignment="Center" VerticalAlignment="Center"
+               Content="{Binding ElementName=elTree, Path=Data, Mode=TwoWay}"/>
+    </Grid>
+</UserControl>
